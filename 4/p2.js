@@ -1,6 +1,8 @@
 import _ from "lodash";
 import fs from "fs";
 
+// Iterate the removal of the rolls until no more can be
+
 const data = fs.readFileSync("./4/in.txt", "utf-8").trim().split("\n");
 
 let grid = data.map((r) => _.toArray(r.trim()));
@@ -43,11 +45,13 @@ while (true) {
 
         if (aCount > 3) continue;
 
+        // Replace a removed roll with 'x'
         grid[y][x] = "x";
         count += 1;
       }
     }
   }
+  // Break when count does not change
   if (lastCount == count) break;
 
   lastCount = count;
